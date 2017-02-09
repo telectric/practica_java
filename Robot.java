@@ -75,7 +75,7 @@ public class Robot
     /**
      * Mostrar información básica de los sensores instalados
      */
-    public void pritnInfoSensores (){
+    public void printInfoSensores (){
     // Bucle for recorriendo todos los Sensores de la lista
         //for (){
         //    sensor.printInfo();
