@@ -32,14 +32,14 @@ public class Robot
     /**
      * Obtención de código de la plataforma del robot
      * 
-     * @return     Obtención de CodigoPlataforma
+     * @return   CodigoPlataforma código de la plataforma del robot
      */
     public String getCodigoPlataforma(){
     return CodigoPlataforma;
     }
     
     /**
-     * Ajuste de mombre de fabricante
+     * Ajuste de código de la plataforma del robot
      * 
      * @param  CodigoPlataforma código de la plataforma del robot
      */
