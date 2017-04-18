@@ -51,16 +51,23 @@ public class Robot
      * Eliminar sensor al Robot por código de sensor
      *
      * @param  CodigoSensor   Código de sensor
+     * 
+     * @return  int con valor 0 si no se eliminó ningún sensor y 1 si se eliminó.
      */
-    public void delSensor (String CodigoSensor){
+    public int delSensor (String CodigoSensor){
         Iterator<Sensor> i = this.listaSensores.iterator();
+        int flag = 0;
         while (i.hasNext()) {
             Sensor o = i.next();
             if(o.getCodigoSensor().equals(CodigoSensor)){
                 i.remove();
-                break;
+                flag = 1;
             }
         }
+        if (flag == 0){
+        System.out.println("Ningún sensor ha sido eliminado ya que no hay sensores con el código seleccionado");
+        }
+        return flag;
     }
     
      /**
@@ -73,13 +80,48 @@ public class Robot
     }
 
     /**
+     * Mostrar lista de sensores
+     */
+    public void printListaSensores (){
+        System.out.println("El código de la plataforma es: "+this.getCodigoPlataforma());
+        System.out.println("Los códigos de los sensores que incluye el robot son:");
+        for(Sensor temporal: listaSensores){
+        System.out.println(temporal.getCodigoSensor());
+        }
+    }
+    
+    /**
+     * Obtener PVP del robot
+     * 
+     * @return double devuelve precio venta al público del robot
+     */
+    public double getPVP (){
+        double precio = 0;
+        double pvp = 0;
+        for(Sensor temporal: listaSensores){
+            precio = precio + temporal.getPrecioFabrica();
+        }
+        pvp = 1.85 * precio;
+        return pvp;
+    }
+    
+    /**
+     * Mostrar PVP del robot
+     * 
+     */
+    public void printPVP (){
+        System.out.println("El precio venta al público del robot es: "+this.getPVP());
+    }
+    
+    
+    /**
      * Mostrar información básica de los sensores instalados
      */
     public void printInfoSensores (){
-    // Bucle for recorriendo todos los Sensores de la lista
-        //for (){
-        //    sensor.printInfo();
-        //}
+        System.out.println("A continuación se presenta la información básica de los sensores configurados en el robot");
+    for(Sensor temporal: listaSensores){
+        temporal.printInfo();
+        }
     }
 
 }
