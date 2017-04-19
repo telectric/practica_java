@@ -18,10 +18,16 @@ public class SensorPresion extends Sensor
         this.setDescripcionProducto("Sensor de presión");
     }
     
+    public SensorPresion(String NombreFabricante, String CodigoFabricante, String CodigoSensor, String DescripcionProducto, double PrecioFabrica, double max )
+    {
+        super(NombreFabricante, CodigoFabricante, CodigoSensor, DescripcionProducto, PrecioFabrica );
+        this.max=max;     
+    }
+    
      /**
      * Obtención de valor de deteción máximo
      * 
-     * @return  max   Obtención sensibilidad
+     * @return  max   Obtención deteción máximo
      */
     public double getMax(){
     return this.max;

@@ -123,13 +123,17 @@ public class Pedido
         System.out.println("A continucación se muestra la información del pedido: "+this.getIdPedido()); 
         for(Robot temporal: listaRobots){
             pvp = pvp + temporal.getPVP();
-            System.out.println("El precio de la referencia "+ temporal.getCodigoPlataforma() +" es: "+temporal.getPVP());
-            temporal.printListaSensores();
+            System.out.println("El precio de la referencia "+ temporal.getCodigoPlataforma() +" es: "+(float)temporal.getPVP()+ " €");
+            System.out.println("------------------------------------------------------------------------------------------------------");
+            temporal.printInfoSensores();
             if (descuento < 0.5){
                 descuento = descuento + 0.1;             
             }
+            System.out.println("------------------------------------------------------------------------------------------------------");
         }
         pvpDescuento = pvp - pvp * descuento;
-        System.out.println("Tras aplicar un descuento del "+descuento*100+" % el precio total es: "+pvpDescuento+" Euros."); 
+        System.out.println("######################################################################################################");
+        System.out.println("Tras aplicar un descuento del "+(int)(descuento*100)+" % el precio total es: "+(float)pvpDescuento+" Euros.");
+        System.out.println("######################################################################################################\n");
     }
 }

@@ -10,11 +10,22 @@ public class SensorLDR extends Sensor
     /**
      * Constructor para objetos de la clase Sensor sin parámetros 
      */
+    
+    /**
+     * Sensibilidad baja o alta
+     */
+    
     private String sensibilidad;  
     
     public SensorLDR()
     {
         this.setDescripcionProducto("Sensor LDR");
+    }
+    
+    public SensorLDR(String NombreFabricante, String CodigoFabricante, String CodigoSensor, String DescripcionProducto, double PrecioFabrica, String sensibilidad )
+    {
+        super(NombreFabricante, CodigoFabricante, CodigoSensor, DescripcionProducto, PrecioFabrica );
+        this.sensibilidad=sensibilidad;     
     }
     
     /**
