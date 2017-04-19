@@ -10,8 +10,41 @@ public class SensorPresion extends Sensor
     /**
      * Constructor para objetos de la clase Sensor sin parámetros 
      */
+    
+    private double max;
+    
     public SensorPresion()
     {
-        
+        this.setDescripcionProducto("Sensor de presión");
+    }
+    
+     /**
+     * Obtención de valor de deteción máximo
+     * 
+     * @return  max   Obtención sensibilidad
+     */
+    public double getMax(){
+    return this.max;
+    }
+    
+    /**
+     * Ajuste de valor de deteción máximo
+     * 
+     * @param  max  valor de deteción máximo
+     */
+    public void setMax(double max){
+    this.max=max;
+    }
+    
+     /**
+     * Método para imprimir información por pantalla 
+     */
+    public void printInfo(){
+    System.out.println("Fabricante: "+this.getNombreFabricante());
+    System.out.println("Código del fabricante: "+this.getCodigoFabricante());
+    System.out.println("Referencia del sensor: "+this.getCodigoSensor());
+    System.out.println("Detalles: "+this.getDescripcionProducto());
+    System.out.println("Valor de deteción máximo: "+this.getMax());
+    System.out.println("Precio: "+this.getPrecioFabrica());
     }
 }
