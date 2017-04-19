@@ -21,6 +21,7 @@ public class Pedido
      */
     public Pedido()
     {
+    listaRobots = new ArrayList <Robot> ();
     fecha = Calendar.getInstance();
     }
     
@@ -123,11 +124,12 @@ public class Pedido
         for(Robot temporal: listaRobots){
             pvp = pvp + temporal.getPVP();
             System.out.println("El precio de la referencia "+ temporal.getCodigoPlataforma() +" es: "+temporal.getPVP());
+            temporal.printListaSensores();
             if (descuento < 0.5){
                 descuento = descuento + 0.1;             
             }
         }
         pvpDescuento = pvp - pvp * descuento;
-        System.out.println("Tras aplicar un descuento del "+descuento*100+" el precio total es: "+pvp+" Euros."); 
+        System.out.println("Tras aplicar un descuento del "+descuento*100+" % el precio total es: "+pvpDescuento+" Euros."); 
     }
 }

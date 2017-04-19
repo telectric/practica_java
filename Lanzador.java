@@ -21,7 +21,7 @@ public class Lanzador
      */
     public static void main(String args[])
     {
-        Sensor sensor1 = new Sensor("Amtel", "AMT", "AMTINF01", "Sensor de infrarojos", 15.99 );
+    Sensor sensor1 = new Sensor("Amtel", "AMT", "AMTINF01", "Sensor de infrarojos", 15.99 );
 
 	Sensor sensor2 = new Sensor("Amtel", "AMT", "AMTINF02", "Sensor de presión", 18.99 );
         
@@ -60,6 +60,21 @@ public class Lanzador
 	robot5.printListaSensores();
 	robot5.delSensor(sensor1.getCodigoSensor());
 	robot5.printListaSensores();
+	
+	Pedido pedido = new Pedido();
+	
+	pedido.setIdPedido("00001");
+	pedido.addRobot(robot1);
+	pedido.addRobot(robot2);
+	pedido.addRobot(robot3);
+	pedido.addRobot(robot4);
+	pedido.addRobot(robot5);
 
+	pedido.imprimirPedido();
+	
+	pedido.delRobot(robot3.getCodigoPlataforma());
+	
+	pedido.imprimirPedido();
+	
     }
 }
