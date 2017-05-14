@@ -57,21 +57,21 @@ public class Robot
     public int delSensor (String CodigoSensor){
         Iterator<Sensor> i = this.listaSensores.iterator();
         int flag = 0;
-    if(!i.hasNext()){
-                System.out.println("Se ha intentado eliminar un sensor de un robot que no tiene sensore añadidos");
+        if(!i.hasNext()){
+                System.out.println("Se ha intentado eliminar un sensor de un robot que no tiene sensores añadidos");
         }
-        else{
-            while (i.hasNext()) {
-                    Sensor o = i.next();
-                    if(o.getCodigoSensor().equals(CodigoSensor)){
-                        i.remove();
-                        flag = 1;
-                    }
-            }
-            if (flag == 0){
-                System.out.println("Ningún sensor ha sido eliminado ya que no hay sensores con el código seleccionado");
-            }
-    }
+        else{   
+                while (i.hasNext()) {
+                        Sensor o = i.next();
+                        if(o.getCodigoSensor().equals(CodigoSensor)){
+                                i.remove();
+                                flag = 1;
+                        }
+                }
+                if (flag == 0){
+                        System.out.println("Ningún sensor ha sido eliminado ya que no hay sensores con el código seleccionado");
+                }
+        }
         return flag;
     }
     
