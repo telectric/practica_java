@@ -52,24 +52,24 @@ public class Robot
      *
      * @param  CodigoSensor   Código de sensor
      * 
-     * @return  int con valor 0 si no se eliminó ningún sensor y 1 si se eliminó.
+     * @return  Bolean con valor false si no se eliminó ningún sensor y true si se eliminó.
      */
-    public int delSensor (String CodigoSensor){
+    public Boolean delSensor (String CodigoSensor){
         Iterator<Sensor> i = this.listaSensores.iterator();
-        int flag = 0;
+        Boolean flag = false;
         if(!i.hasNext()){
                 System.out.println("Se ha intentado eliminar un sensor de un robot que no tiene sensores añadidos");
         }
         else{   
                 while (i.hasNext()) {
-                        Sensor o = i.next();
-                        if(o.getCodigoSensor().equals(CodigoSensor)){
-                                i.remove();
-                                flag = 1;
-                        }
+                    Sensor o = i.next();
+                    if(o.getCodigoSensor().equals(CodigoSensor)){
+                        i.remove();
+                        flag = true;
+                    }
                 }
-                if (flag == 0){
-                        System.out.println("Ningún sensor ha sido eliminado ya que no hay sensores con el código seleccionado");
+                if (flag == false){
+                    System.out.println("Ningún sensor ha sido eliminado ya que no hay sensores con el código seleccionado");
                 }
         }
         return flag;
@@ -79,9 +79,48 @@ public class Robot
      * Añadir sensor al Robot
      *
      * @param  Sensor sensor a añadir
+     * 
+     * @return Bolean con valor false si no se añadió ningún sensor y true si se añadió con éxito.
      */
-    public void addSensor (Sensor sensor){
-        this.listaSensores.add(sensor);
+    public Boolean addSensor (Sensor sensor){
+        Iterator<Sensor> i = this.listaSensores.iterator();
+        if (sensor instanceof SensorLDR){
+            while (i.hasNext()) {
+                Sensor o = i.next();
+                if(o instanceof SensorLDR){
+                    System.out.println("Ya hay un sensor LDR en el robot");
+                    return false;                    
+                }
+            }
+            this.listaSensores.add(sensor);
+            return true;
+        }
+            else if (sensor instanceof SensorUltrasonido){
+                while (i.hasNext()) {
+                    Sensor o = i.next();
+                    if(o instanceof SensorIR){
+                        System.out.println("El sensor de Ultrasonidos no es compatible con el sensor IR");
+                        return false;
+                    }
+                }
+                this.listaSensores.add(sensor);
+                return true;
+            }
+                else if (sensor instanceof SensorIR){
+                    while (i.hasNext()) {
+                    Sensor o = i.next();
+                    if(o instanceof SensorUltrasonido){
+                        System.out.println("El sensor IR no es compatible con el sensor de Ultrasonidos");
+                        return false;
+                    }
+                }
+                this.listaSensores.add(sensor);
+                return true;
+                }
+                 else {
+                     this.listaSensores.add(sensor);
+                     return true;
+                    }
     }
 
     /**
