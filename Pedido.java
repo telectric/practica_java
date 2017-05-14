@@ -90,7 +90,7 @@ public class Pedido
     
     
      /**
-     * Eliminar sensor al Robot por código de plataforma
+     * Eliminar Robot por código de plataforma
      *
      * @param  CodigoPlataforma   Código de plataforma
      * 
