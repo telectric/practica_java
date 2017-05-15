@@ -16,6 +16,7 @@ public class Pedido
     private String idCliente;
     private Calendar fecha;
     private String address;
+    private Boolean premium;
     /**
      * Constructor para objetos de la clase Pedido sin parámetros
      */
@@ -23,6 +24,7 @@ public class Pedido
     {
     listaRobots = new ArrayList <Robot> ();
     fecha = Calendar.getInstance();
+    premium = false;
     }
     
     /**
@@ -60,6 +62,24 @@ public class Pedido
     public void setIdCliente(String idCliente){
     this.idCliente=idCliente;
     }
+    
+     /**
+     * Obtención clase de cliente cliente
+     * 
+     * @return   premium  true si es premium false si no lo es
+     */
+    public Boolean getPremium(){
+    return this.premium;
+    }
+    
+    /**
+     * Ajuste de clase de cliente cliente
+     * 
+     * @param  premium true si es premium false si no lo es
+     */
+    public void Premium(Boolean premium){
+    this.premium=premium;
+    }    
     
     /**
      * Obtención del dirección del pedido
@@ -131,6 +151,7 @@ public class Pedido
             }
             System.out.println("------------------------------------------------------------------------------------------------------");
         }
+        if(premium){descuento = descuento + 0.15;}
         pvpDescuento = pvp - pvp * descuento;
         System.out.println("######################################################################################################");
         System.out.println("Tras aplicar un descuento del "+(int)(descuento*100)+" % el precio total es: "+(float)pvpDescuento+" Euros.");
