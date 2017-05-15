@@ -77,7 +77,7 @@ public class Pedido
      * 
      * @param  premium true si es premium false si no lo es
      */
-    public void Premium(Boolean premium){
+    public void setPremium(Boolean premium){
     this.premium=premium;
     }    
     

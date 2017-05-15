@@ -1,4 +1,3 @@
-
 /**
  * Clase para ejecutar main()
  *
@@ -26,42 +25,56 @@ public class Lanzador
     
     
         
-    SensorLDR sensorLDR = new SensorLDR("Amtel", "AMT", "AMTINF01", "Sensor LDR", 5.0, "baja" );
-    SensorPresion sensorPresion = new SensorPresion("Amtel", "AMT", "AMTINF02", "Sensor de presión", 25.0, 1.0 );
-    SensorObstaculos sensorObstaculos = new SensorObstaculos("Amtel", "AMT", "AMTINF03", "Sensor detector de obstáculos", 15.0, "media" );
-
-    SensorUltrasonido sensorUltrasonido = new SensorUltrasonido("Amtel", "AMT", "AMTINF04", "Sensor de ultrasonido", 30, 10.0 );
-    SensorPresion sensorPresion1_5 = new SensorPresion("Amtel", "AMT", "AMTINF02_15", "Sensor de presión", 29.0, 1.5 );
-    SensorObstaculos sensorObstaculosA = new SensorObstaculos("Amtel", "AMT", "AMTINF03A", "Sensor detector de obstáculos", 15.0, "alta" );
-
-    SensorLDR sensorLDR_A = new SensorLDR("Amtel", "AMT", "AMTINF01_A", "Sensor LDR", 7.0, "alta" );
-    SensorPresion sensorPresion_08 = new SensorPresion("Amtel", "AMT", "AMTINF02_08", "Sensor de presión", 20.0, 0.8 );
-    SensorIR sensorIR = new SensorIR("Amtel", "AMT", "AMTINF09", "Sensor de infrarojos", 45.0, 0.1 );
-    SensorCCD sensorCCD = new SensorCCD("Amtel", "AMT", "AMTINF10", "Sensor para toma de imágenes CCD", 75, 1024 );
-    SensorObstaculos sensorObstaculosB = new SensorObstaculos("Amtel", "AMT", "AMTINF03_B", "Sensor detector de obstáculos", 12.0, "baja" );
-
+    SensorLDR sensorLDR = new SensorLDR("Amtel", "AMT", "AMTLDR01", "Sensor LDR", 7.0, "alta" );
+    SensorPresion sensorPresion = new SensorPresion("Amtel", "AMT", "AMTP01", "Sensor de presión", 22.0, 0.9 );
+    SensorIR sensorIR = new SensorIR("Amtel", "AMT", "AMTINF01", "Sensor de infrarojos", 45.0, 0.1 );
+    SensorObstaculos sensorObstaculos = new SensorObstaculos("Amtel", "AMT", "AMTOB01", "Sensor detector de obstáculos", 12.0, "baja" );
+    
+    SensorLDR sensorLDR_2 = new SensorLDR("Amtel", "AMT", "AMTLDR02", "Sensor LDR", 5.0, "baja" );
+    SensorUltrasonido sensorUltrasonido = new SensorUltrasonido("Amtel", "AMT", "AMTUS01", "Sensor de ultrasonido", 30, 10.0 );
+    
+    
     Robot robot1 = new Robot ("Robot1");
     robot1.addSensor(sensorLDR);
-    for(int i=0;i<10;i++){
+    for(int i=0;i<8;i++){
         robot1.addSensor(sensorPresion);
     }
+    robot1.addSensor(sensorIR);
     robot1.addSensor(sensorObstaculos);
-
+    
+    robot1.addSensor(sensorLDR_2);
+    robot1.addSensor(sensorUltrasonido);
+    
+    SensorPresion sensorPresion1_5 = new SensorPresion("Amtel", "AMT", "AMTP02", "Sensor de presión", 29.0, 1.5 );
+    SensorObstaculos sensorObstaculosA = new SensorObstaculos("Amtel", "AMT", "AMTOB02", "Sensor detector de obstáculos", 15.0, "alta" );
+    
     Robot robot2 = new Robot ("Robot2");
-    robot2.addSensor(sensorUltrasonido);
+    robot2.addSensor(sensorIR);
     robot2.addSensor(sensorPresion1_5);
     robot2.addSensor(sensorObstaculosA);
-
+    
+    robot2.addSensor(sensorLDR);
+    robot2.addSensor(sensorUltrasonido);
+    
+    SensorPresion sensorPresion_08 = new SensorPresion("Amtel", "AMT", "AMTP_03", "Sensor de presión", 25.0, 1.0 );
+    SensorCCD sensorCCD = new SensorCCD("Amtel", "AMT", "AMTCCD01", "Sensor para toma de imágenes CCD", 55.0, 768 );
+    SensorObstaculos sensorObstaculosB = new SensorObstaculos("Amtel", "AMT", "AMTOB03", "Sensor detector de obstáculos", 12.0, "baja" );
+    SensorUltrasonido sensorUltrasonido_2 = new SensorUltrasonido("Amtel", "AMT", "AMTUS02", "Sensor de ultrasonido", 10, 10.0 );
+    
     Robot robot3 = new Robot ("Robot3");
-    robot3.addSensor(sensorLDR_A);
-    for(int i=0;i<5;i++){
+    robot3.addSensor(sensorLDR);
+    for(int i=0;i<6;i++){
         robot3.addSensor(sensorPresion_08);
     }
     robot3.addSensor(sensorIR);
-    for(int i=0;i<4;i++){
+    for(int i=0;i<2;i++){
         robot3.addSensor(sensorCCD);
     }
     robot3.addSensor(sensorObstaculosB);
+    
+    robot3.addSensor(sensorLDR_2);
+    robot3.addSensor(sensorObstaculosB);
+    
     
     pedido.addRobot(robot1);
     pedido.addRobot(robot2);
@@ -69,7 +82,17 @@ public class Lanzador
 
     pedido.imprimirPedido();
     
-    pedido.delRobot(robot2.getCodigoPlataforma());
+    pedido.setPremium(true);
+    
+    pedido.imprimirPedido();
+    
+    pedido.setPremium(false);
+    
+    pedido.delRobot(robot3.getCodigoPlataforma());
+    
+    pedido.imprimirPedido();
+    
+    pedido.setPremium(true);
     
     pedido.imprimirPedido();
     
